@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import AllowAny
 from .models import Family, FamilyImage, FamilyMember
 from .serializers import FamilySerializer, FamilyImageSerializer, FamilyMemberSerializer, \
     FamilyDetailSerializer, FamilyListSerializer, FamilyRegisterSerializer, RecursiveFamilySerializer
@@ -10,7 +10,7 @@ from rest_framework.response import Response
 class FamilyViewSet(viewsets.ModelViewSet):
     queryset = Family.objects.all()
     serializer_class = FamilySerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [AllowAny] 
 
     def get_serializer_class(self):
         if self.action == 'create':
